@@ -78,6 +78,8 @@ namespace IdentitySample.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            if (await context.Users.FirstOrDefaultAsync(x=>x.Email==user.Email) != null)
+                return BadRequest();
             context.Users.Add(user);
             await context.SaveChangesAsync();
 

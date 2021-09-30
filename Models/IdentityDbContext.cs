@@ -26,6 +26,7 @@ namespace IdentitySample.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<User>().HasIndex(x => x.Email).IsUnique();
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
